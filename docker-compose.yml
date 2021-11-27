@@ -14,45 +14,45 @@ services:
         restart: unless-stopped
 
     todo-profile:
-        build: ./ogak/micro-profile:1.0
+        build: ./profile
         command: "ts-node /app/src/server"
-        image: todo-profile
+        image: ogak/micro-todo-profile:1.0
         restart: always
         container_name: todo-profile
         ports:
         - 5001:5001
     
     todo-services:
-        build: ./ogak/micro-services:1.0
+        build: ./services
         command: "node /app/src/server.js"
-        image: todo-services
+        image: ogak/micro-todo-services:1.0
         restart: always
         container_name: todo-services
         ports:
         - 4000:4000
     
     todo-skill:
-        build: ./ogak/micro-skill:1.0
+        build: ./skill
         command: "ts-node /app/src/server"
-        image: todo-skill
+        image: ogak/micro-todo-skill:1.0
         restart: always
         container_name: todo-skill
         ports:
         - 5000:5000
 
     todo-todo:
-        build: ./ogak/micro-todo:1.0
+        build: ./todo
         command: "ts-node /app/src/server"
-        image: todo-todo
+        image: ogak/micro-todo:1.0
         restart: always
         container_name: todo-todo
         ports:
         - 5002:5002
 
     todo-user:
-        build: ./ogak/micro-user:1.0
+        build: ./user
         command: "ts-node /app/src/server"
-        image: todo-user
+        image: ogak/micro-todo-user:1.0
         restart: always
         container_name: todo-user
         ports:
