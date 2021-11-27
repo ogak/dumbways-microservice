@@ -8,13 +8,13 @@ services:
         - PUID=1000
         - PGID=1000
         volumes:
-        - /home/sgnd/mongo/database:/data/db
+        - /home/ubuntu/mongo/database:/data/db
         ports:
         - 27017:27017
         restart: unless-stopped
 
     todo-profile:
-        build: ./profile
+        build: ./ogak/micro-profile:1.0
         command: "ts-node /app/src/server"
         image: todo-profile
         restart: always
@@ -23,7 +23,7 @@ services:
         - 5001:5001
     
     todo-services:
-        build: ./services
+        build: ./ogak/micro-services:1.0
         command: "node /app/src/server.js"
         image: todo-services
         restart: always
@@ -32,7 +32,7 @@ services:
         - 4000:4000
     
     todo-skill:
-        build: ./skill
+        build: ./ogak/micro-skill:1.0
         command: "ts-node /app/src/server"
         image: todo-skill
         restart: always
@@ -41,7 +41,7 @@ services:
         - 5000:5000
 
     todo-todo:
-        build: ./todo
+        build: ./ogak/micro-todo:1.0
         command: "ts-node /app/src/server"
         image: todo-todo
         restart: always
@@ -50,7 +50,7 @@ services:
         - 5002:5002
 
     todo-user:
-        build: ./user
+        build: ./ogak/micro-user:1.0
         command: "ts-node /app/src/server"
         image: todo-user
         restart: always
